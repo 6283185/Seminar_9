@@ -12,23 +12,9 @@ app = ApplicationBuilder().token("919956662:AAFoLe3p4lKoJIxBx3eSeUu0mcAfEBHX3RM"
 async def hi_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f'Приветствую тебя, {update.effective_user.first_name}!')
 
-async def weather(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("В каком городе хотите посмотреть погоду?")
-    return 1    
-
-async def show_weather(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    city = update.message.text
-    await update.message.reply_text(
-        f"Вы хотите посмотреть погоду в городе {city}.\n"
-        f"\n"
-        f"Но я не умею показывать погоду, извините :("
-    )
-    return ConversationHandler.END
-
 
 async def weather_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f'В городе {city} сейчас {temperature}°C.')    
-
 
 
 app.add_handler(CommandHandler("hello", hi_command))
